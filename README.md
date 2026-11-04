@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="assets/SynkroContacts-3D-Banner.png" alt="SynkroContacts Banner" width="100%" />
+  <img src="assets/assetsSynkroContacts-3D-Banner.png" alt="SynkroContacts Banner" width="100%" />
 
   <h1>SynkroContacts</h1>
   <p><b>A fast, local-first Windows desktop contact & company manager built with .NET 8 and MVVM.</b></p>
@@ -21,8 +21,8 @@
 
 | Cyber Blue Theme | Amber Gold Theme |
 | :---: | :---: |
-| <img src="assets/contacts-blue.png" width="100%" /> | <img src="assets/contacts-gold.png" width="100%" /> |
-| <img src="assets/companies-blue.png" width="100%" /> | <img src="assets/companies-gold.png" width="100%" /> |
+| <img src="assets/SynkroContacts_1.png" width="100%" /> | <img src="assets/assetscontacts-gold.png" width="100%" /> |
+| <img src="assets/SynkroContacts_2.png" width="100%" /> | <img src="assets/assetscompanies-gold.png" width="100%" /> |
 
 ---
 
@@ -71,6 +71,6 @@ Open **`SynkroContacts.sln`** in Visual Studio 2022, set platform to **`x64`**, 
 ---
 
 <div align="center">
-  <img src="assets/SynkroContacts-3D-Icon.png" width="56" />
+  <img src="assets/assetsSynkroContacts-3D-Icon.png" width="56" />
   <p><sub>Licensed under the MIT License • Built with C# & .NET 8</sub></p>
 </div>
