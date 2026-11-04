@@ -2,75 +2,109 @@
 
   <img src="assets/assetsSynkroContacts-3D-Banner.png" alt="SynkroContacts Banner" width="100%" />
 
+  <br />
+
   <h1>SynkroContacts</h1>
-  <p><b>A fast, local-first Windows desktop contact & company manager built with .NET 8 and MVVM.</b></p>
+  <p><b>Native, Local-First Contact & Organization Intelligence for Windows</b></p>
 
   <p>
-    <img src="https://img.shields.io/badge/.NET-8.0-512BD4?style=flat-square&logo=dotnet&logoColor=white" />
-    <img src="https://img.shields.io/badge/Platform-Windows%2010%2F11%20(x64)-0078D6?style=flat-square&logo=windows11&logoColor=white" />
-    <img src="https://img.shields.io/badge/EF%20Core%20SQLite-8.0.11-003B57?style=flat-square&logo=sqlite&logoColor=white" />
-    <img src="https://img.shields.io/badge/MVVM%20Toolkit-8.3.2-68217A?style=flat-square&logo=csharp&logoColor=white" />
-    <img src="https://img.shields.io/badge/vCard-7.2.1-0284C7?style=flat-square" />
+    <img src="https://img.shields.io/badge/.NET-8.0%20LTS-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" />
+    <img src="https://img.shields.io/badge/Target-Windows%2010%2F11%20(x64)-0078D6?style=for-the-badge&logo=windows11&logoColor=white" />
+    <img src="https://img.shields.io/badge/ORM-EF%20Core%208.0.11-003B57?style=for-the-badge&logo=sqlite&logoColor=white" />
+    <img src="https://img.shields.io/badge/Pattern-MVVM%20Toolkit%208.3-68217A?style=for-the-badge&logo=csharp&logoColor=white" />
+    <img src="https://img.shields.io/badge/Standard-vCard%207.2-0284C7?style=for-the-badge" />
+  </p>
+
+  <p>
+    <a href="#-interface--workspace">Workspace</a> •
+    <a href="#-core-capabilities">Capabilities</a> •
+    <a href="#-system-architecture">Architecture</a> •
+    <a href="#-development--build">Build</a>
   </p>
 
 </div>
 
 ---
 
-## 📸 Screenshots
+**SynkroContacts** is a high-performance Windows desktop relationship manager engineered on **.NET 8**. Designed with a decoupled, multi-layered **MVVM** architecture and local **SQLite** persistence, it delivers a zero-telemetry workspace for managing complex personal and corporate networks.
 
-| Cyber Blue Theme | Amber Gold Theme |
+---
+
+## 🖥️ Interface & Workspace
+
+A distraction-free **3-Pane Master-Detail** layout with real-time filtering, structured entity cards, and contextual notes.
+
+| Cyber Blue Workspace | Amber Gold Workspace |
 | :---: | :---: |
 | <img src="assets/SynkroContacts_1.png" width="100%" /> | <img src="assets/assetscontacts-gold.png" width="100%" /> |
 | <img src="assets/SynkroContacts_2.png" width="100%" /> | <img src="assets/assetscompanies-gold.png" width="100%" /> |
 
 ---
 
-## ⚡ Highlights
+## ⚡ Core Capabilities
 
-* **Bidirectional Linking:** Many-to-many relationship between **Contacts** and **Companies** with instant cross-navigation.
-* **Rich Entity Profiles:** Structured names, auto-generated monogram initials, notes, and unlimited phones, emails, and addresses with `IsPreferred` priority resolution.
-* **vCard (`.vcf`) Engine:** Full import/export support powered by `FolkerKinzel.VCards`.
-* **100% Local & Private:** Zero cloud dependencies. Powered by a local SQLite database (`%AppData%\SynkroContacts\contacts.db`).
-* **Modern Fluent UI:** Clean 3-pane master-detail dark interface with customizable accent themes.
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <b>🕸️ Bidirectional Entity Graph</b><br />
+      Many-to-many relational linking between <b>Contacts</b> and <b>Companies</b> with instant cross-entity navigation.
+    </td>
+    <td width="50%" valign="top">
+      <b>🧠 Smart Endpoint Resolution</b><br />
+      Multi-channel phones, emails, and addresses with deterministic <code>IsPreferred</code> fallback logic and computed monograms.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <b>🔄 High-Fidelity vCard Engine</b><br />
+      Standards-compliant <code>.vcf</code> parsing and serialization via <code>FolkerKinzel.VCards</code> for seamless data portability.
+    </td>
+    <td width="50%" valign="top">
+      <b>🔒 Zero-Cloud SQLite Persistence</b><br />
+      100% offline-first storage powered by EF Core 8 migrations at <code>%AppData%\SynkroContacts\contacts.db</code>.
+    </td>
+  </tr>
+</table>
 
 ---
 
-## 🏗 Architecture & Tech Stack
+## 🏗 System Architecture
 
-Built on a decoupled **5-project architecture** targeting `net8.0-windows10.0.19041.0` (Windows 10 1809+ `x64`):
+The solution enforces strict separation of concerns across **5 decoupled projects** targeting `net8.0-windows10.0.19041.0`:
 
 ```text
 SynkroContacts.sln
-├── SynkroContacts/             # Presentation Layer (8 Views, ViewModels, UI Shell)
-├── SynkroContacts.Services/    # Business Logic (Contacts, Companies, vCard, Logging, Notifications)
-├── SynkroContacts.Data/        # Persistence Layer (EF Core 8 Context, Entities & SQLite Migrations)
-├── SynkroContacts.DataMapping/ # Entity <-> Domain Model Mappers
-└── SynkroContacts.Models/      # Domain Models, Computed Properties & Enums
+├── SynkroContacts/             # Presentation Layer (WinExe, 8 Modular Views, MVVM ViewModels)
+├── SynkroContacts.Services/    # Application Layer (Contact/Company Logic, vCard I/O, Logging)
+├── SynkroContacts.DataMapping/ # Translation Layer (Bidirectional Entity <-> Domain Mappers)
+├── SynkroContacts.Data/        # Persistence Layer (EF Core 8 DbContext, Entities, Migrations)
+└── SynkroContacts.Models/      # Domain Layer (Core Entities, Computed Properties, Enums)
 ```
 
-| Package | Version | Role |
+| Dependency | Version | Responsibility |
 | :--- | :---: | :--- |
-| `Microsoft.EntityFrameworkCore.Sqlite` | `8.0.11` | Local SQLite ORM & migrations |
-| `CommunityToolkit.Mvvm` | `8.3.2` | Source-generated MVVM bindings & commands |
-| `FolkerKinzel.VCards` | `7.2.1` | `.vcf` parsing and serialization |
+| `Microsoft.EntityFrameworkCore.Sqlite` | `8.0.11` | Relational data access & automated schema migrations |
+| `CommunityToolkit.Mvvm` | `8.3.2` | Source-generated observable properties & relay commands |
+| `FolkerKinzel.VCards` | `7.2.1` | RFC-compliant vCard stream serialization & parsing |
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Development & Build
 
-**Prerequisites:** Windows 10/11 (x64), [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0), and **Visual Studio 2022** (`.NET desktop development` workload).
+### Prerequisites
+* **OS:** Windows 10 (Build 17763 / v1809+) or Windows 11 (`x64`)
+* **Toolchain:** [Visual Studio 2022](https://visualstudio.microsoft.com/) (`.NET desktop development` workload) & [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 
+### Build from Source
 ```bash
 git clone https://github.com/jackstatham596/SynkroContacts.git
 cd SynkroContacts
 ```
-
-Open **`SynkroContacts.sln`** in Visual Studio 2022, set platform to **`x64`**, and press <kbd>F5</kbd>.
+Open **`SynkroContacts.sln`** in Visual Studio 2022, set the active configuration to **`x64`**, and press <kbd>F5</kbd> to compile and initialize the local SQLite database.
 
 ---
 
 <div align="center">
-  <img src="assets/assetsSynkroContacts-3D-Icon.png" width="56" />
-  <p><sub>Licensed under the MIT License • Built with C# & .NET 8</sub></p>
+  <img src="assets/assetsSynkroContacts-3D-Icon.png" width="52" />
+  <p><sub>Released under the MIT License • Engineered with C# & .NET 8</sub></p>
 </div>
