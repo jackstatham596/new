@@ -1,109 +1,107 @@
-![Uploading SynkroContacts-3D-Banner1.png…]()
 <div align="center">
 
-  <img src="assets/assetsSynkroContacts-3D-Banner.png" alt="SynkroContacts Banner" width="100%" />
-
-  <br />
+  <img src="assets/SynkroContacts-3D-Banner1.png" alt="SynkroContacts Banner" width="100%" />
 
   <h1>SynkroContacts</h1>
-  <p><b>Native, Local-First Contact & Organization Intelligence for Windows</b></p>
+  <p><b>A modern, fast, and offline-first Windows desktop app for managing contacts and companies.</b></p>
 
   <p>
-    <img src="https://img.shields.io/badge/.NET-8.0%20LTS-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" />
-    <img src="https://img.shields.io/badge/Target-Windows%2010%2F11%20(x64)-0078D6?style=for-the-badge&logo=windows11&logoColor=white" />
-    <img src="https://img.shields.io/badge/ORM-EF%20Core%208.0.11-003B57?style=for-the-badge&logo=sqlite&logoColor=white" />
-    <img src="https://img.shields.io/badge/Pattern-MVVM%20Toolkit%208.3-68217A?style=for-the-badge&logo=csharp&logoColor=white" />
-    <img src="https://img.shields.io/badge/Standard-vCard%207.2-0284C7?style=for-the-badge" />
+    <img src="https://img.shields.io/badge/.NET-8.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" />
+    <img src="https://img.shields.io/badge/Windows-10%20%7C%2011%20(x64)-0078D6?style=for-the-badge&logo=windows11&logoColor=white" />
+    <img src="https://img.shields.io/badge/EF%20Core%20SQLite-8.0.11-003B57?style=for-the-badge&logo=sqlite&logoColor=white" />
+    <img src="https://img.shields.io/badge/MVVM%20Toolkit-8.3.2-68217A?style=for-the-badge&logo=csharp&logoColor=white" />
+    <img src="https://img.shields.io/badge/vCard-7.2.1-0284C7?style=for-the-badge" />
   </p>
 
   <p>
-    <a href="#-interface--workspace">Workspace</a> •
-    <a href="#-core-capabilities">Capabilities</a> •
-    <a href="#-system-architecture">Architecture</a> •
-    <a href="#-development--build">Build</a>
+    <a href="#-screenshots">Screenshots</a> •
+    <a href="#-features">Features</a> •
+    <a href="#-project-structure">Project Structure</a> •
+    <a href="#-getting-started">Getting Started</a>
   </p>
 
 </div>
 
 ---
 
-**SynkroContacts** is a high-performance Windows desktop relationship manager engineered on **.NET 8**. Designed with a decoupled, multi-layered **MVVM** architecture and local **SQLite** persistence, it delivers a zero-telemetry workspace for managing complex personal and corporate networks.
+## 📸 Screenshots
 
----
-
-## 🖥️ Interface & Workspace
-
-A distraction-free **3-Pane Master-Detail** layout with real-time filtering, structured entity cards, and contextual notes.
-
-| Cyber Blue Workspace | Amber Gold Workspace |
+| Blue Theme | Gold Theme |
 | :---: | :---: |
-| <img src="assets/SynkroContacts_1.png" width="100%" /> | <img src="assets/assetscontacts-gold.png" width="100%" /> |
-| <img src="assets/SynkroContacts_2.png" width="100%" /> | <img src="assets/assetscompanies-gold.png" width="100%" /> |
+| <img src="assets/contacts-blue.png" alt="Contacts - Blue" width="100%" /> | <img src="assets/contacts-gold.png" alt="Contacts - Gold" width="100%" /> |
+| <img src="assets/companies-blue.png" alt="Companies - Blue" width="100%" /> | <img src="assets/SynkroContacts_2.png" alt="Companies - Gold" width="100%" /> |
 
 ---
 
-## ⚡ Core Capabilities
+## ✨ Features
 
 <table>
   <tr>
     <td width="50%" valign="top">
-      <b>🕸️ Bidirectional Entity Graph</b><br />
-      Many-to-many relational linking between <b>Contacts</b> and <b>Companies</b> with instant cross-entity navigation.
+      <b>👥 Contacts & Companies Linking</b><br />
+      Link multiple contacts to companies and easily jump between a company and its people with a single click.
     </td>
     <td width="50%" valign="top">
-      <b>🧠 Smart Endpoint Resolution</b><br />
-      Multi-channel phones, emails, and addresses with deterministic <code>IsPreferred</code> fallback logic and computed monograms.
+      <b>📞 Detailed Profiles</b><br />
+      Store multiple phone numbers, emails, and addresses for each contact or company, and mark your preferred ones.
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <b>🔄 High-Fidelity vCard Engine</b><br />
-      Standards-compliant <code>.vcf</code> parsing and serialization via <code>FolkerKinzel.VCards</code> for seamless data portability.
+      <b>🔄 vCard (.vcf) Import & Export</b><br />
+      Easily back up or move your contacts using standard <code>.vcf</code> files powered by <code>FolkerKinzel.VCards</code>.
     </td>
     <td width="50%" valign="top">
-      <b>🔒 Zero-Cloud SQLite Persistence</b><br />
-      100% offline-first storage powered by EF Core 8 migrations at <code>%AppData%\SynkroContacts\contacts.db</code>.
+      <b>🔒 100% Local & Private</b><br />
+      No cloud or internet required. All data is saved locally in a SQLite database at <code>%AppData%\SynkroContacts\contacts.db</code>.
     </td>
   </tr>
 </table>
 
 ---
 
-## 🏗 System Architecture
+## 🏗 Project Structure
 
-The solution enforces strict separation of concerns across **5 decoupled projects** targeting `net8.0-windows10.0.19041.0`:
+The solution is built with **.NET 8** (`net8.0-windows10.0.19041.0`) and follows a clean **MVVM** architecture across 5 projects:
 
 ```text
 SynkroContacts.sln
-├── SynkroContacts/             # Presentation Layer (WinExe, 8 Modular Views, MVVM ViewModels)
-├── SynkroContacts.Services/    # Application Layer (Contact/Company Logic, vCard I/O, Logging)
-├── SynkroContacts.DataMapping/ # Translation Layer (Bidirectional Entity <-> Domain Mappers)
-├── SynkroContacts.Data/        # Persistence Layer (EF Core 8 DbContext, Entities, Migrations)
-└── SynkroContacts.Models/      # Domain Layer (Core Entities, Computed Properties, Enums)
+├── SynkroContacts/             # UI Layer (8 Views, ViewModels, Themes & App Startup)
+├── SynkroContacts.Services/    # Business Logic (Contacts, Companies, vCard, Logging, Notifications)
+├── SynkroContacts.Data/        # Database Layer (EF Core 8 DbContext, Entities & SQLite Migrations)
+├── SynkroContacts.DataMapping/ # Data Mappers (Entity <-> Model conversion)
+└── SynkroContacts.Models/      # Core Models, Computed Properties & Enums
 ```
 
-| Dependency | Version | Responsibility |
+### Tech Stack
+| Package | Version | Usage |
 | :--- | :---: | :--- |
-| `Microsoft.EntityFrameworkCore.Sqlite` | `8.0.11` | Relational data access & automated schema migrations |
-| `CommunityToolkit.Mvvm` | `8.3.2` | Source-generated observable properties & relay commands |
-| `FolkerKinzel.VCards` | `7.2.1` | RFC-compliant vCard stream serialization & parsing |
+| `Microsoft.EntityFrameworkCore.Sqlite` | `8.0.11` | Local SQLite database & migrations |
+| `CommunityToolkit.Mvvm` | `8.3.2` | MVVM data binding & commands |
+| `FolkerKinzel.VCards` | `7.2.1` | Reading and writing `.vcf` vCard files |
 
 ---
 
-## 🚀 Development & Build
+## 🚀 Getting Started
 
-### Prerequisites
-* **OS:** Windows 10 (Build 17763 / v1809+) or Windows 11 (`x64`)
-* **Toolchain:** [Visual Studio 2022](https://visualstudio.microsoft.com/) (`.NET desktop development` workload) & [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+### Requirements
+* **OS:** Windows 10 (version 1809+) or Windows 11 (`x64`)
+* **Tools:** [Visual Studio 2022](https://visualstudio.microsoft.com/) (with `.NET desktop development` workload) and [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 
-### Build from Source
-```bash
-git clone https://github.com/jackstatham596/SynkroContacts.git
-cd SynkroContacts
-```
-Open **`SynkroContacts.sln`** in Visual Studio 2022, set the active configuration to **`x64`**, and press <kbd>F5</kbd> to compile and initialize the local SQLite database.
+### How to Run
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/jackstatham596/SynkroContacts.git
+   cd SynkroContacts
+   ```
+2. Open **`SynkroContacts.sln`** in **Visual Studio 2022**.
+3. Set the build platform to **`x64`** and press <kbd>F5</kbd> to build and run.
 
 ---
+
+<div align="center">
+  <p><sub>Licensed under the MIT License • Built with ❤️ using C# & .NET 8</sub></p>
+</div>
 
 <div align="center">
   <img src="assets/assetsSynkroContacts-3D-Icon.png" width="52" />
