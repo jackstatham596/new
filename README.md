@@ -1,3 +1,4 @@
+![Uploading SynkroContacts-3D-Banner1.png…]()
 <div align="center">
 
   <img src="assets/assetsSynkroContacts-3D-Banner.png" alt="SynkroContacts Banner" width="100%" />
